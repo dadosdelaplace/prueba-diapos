@@ -20,24 +20,25 @@ accidentes_tb <-
 accidentes_tb
 ```
 
----
+------------------------------------------------------------------------
 
 ## Resumen
 
 ```{r}
-resumen <- accidentes_tb |> count(sexo)
+resumen <- accidentes_tb |> 
+  drop_na() |> 
+  count(sexo)
 resumen
 ```
 
----
+------------------------------------------------------------------------
 
 ## Visualización
 
 ```{r}
 #| code-fold: true
 ggplot(resumen) +
-  geom_col(aes(x = sexo, y = n, fill = sexo), alpha = 0.6) +
-  ggthemes::scale_fill_colorblind() +
-  theme_minimal()
+  geom_col(aes(x = sexo, y = n, fill = sexo), alpha = 1) +
+  ggthemes::scale_color_canva() +
+  theme_grey()
 ```
-
